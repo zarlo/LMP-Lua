@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>LMP_Lua</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MoonSharp" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LunaCommon">
+      <HintPath>..\..\3rd party\LMP\LunaCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\3rd party\LMP\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Server">
+      <HintPath>..\..\3rd party\LMP\Server.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

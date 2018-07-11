@@ -17,6 +17,7 @@ namespace LMP_Lua
             script = new Script();
 
             script.Globals["KSP"] = ;
+            script.Globals.Set("RegisterHandler", RegisterHandler);
 
 
         }

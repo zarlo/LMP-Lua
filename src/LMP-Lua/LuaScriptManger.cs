@@ -32,12 +32,17 @@ namespace LMP_Lua
         public static void LoadPlugins()
         {
 
-
+            foreach (string Plugin in System.IO.Directory.GetDirectories(Environment.CurrentDirectory + "/plugins/lua"))
+            {
+                LoadPlugin(Plugin);
+            }
 
         }
 
         public static void LoadPlugin(string name)
         {
+
+            Console.WriteLine("[LUA] Loading {0}", name);
 
             PluginData data = JsonConvert.DeserializeObject<PluginData>(System.IO.File.ReadAllText(Environment.CurrentDirectory + name + "/plugin.json"));
 

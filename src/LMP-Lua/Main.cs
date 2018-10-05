@@ -2,6 +2,8 @@
 using Server.Client;
 using Server.Plugin;
 using LunaCommon.Message.Interface;
+using MoonSharp.Interpreter.Loaders;
+using MoonSharp.Interpreter;
 
 namespace LMP_Lua
 {
@@ -45,9 +47,13 @@ namespace LMP_Lua
         public void OnServerStart()
         {
 
+
+            UserData.RegisterAssembly();
+            
             LuaScriptManger.LoadPlugins();
 
             LuaScriptManger.CallHandler("OnServerStart");
+
 
         }
 

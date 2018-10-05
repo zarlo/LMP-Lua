@@ -17,17 +17,36 @@ namespace LMP_Lua
 
             script = new Script();
             script.Globals["KSP"] = new KSP(this);
-            script.Globals["LMP"] = new LMP(this);
+            script.Globals["LMP"] = new LMP();
             script.Globals["RegisterHandler"] = (Func<string, string, bool>)RegisterHandler;
             script.Globals["RemoveHandler"] = (Func<string, string, bool>)RemoveHandler;
-            
+            script.Globals["RegisterCommand"] = (Func<string, string, string, bool>)RegisterCommand;
+
 
         }
 
         public Script script { get; set; }
         public Dictionary<string, List<string>> Handlers = new Dictionary<string, List<string>>();
-        
-        bool RemoveHandler(string Name, string func)
+
+        public void CallHandler(string Name, params object[] data)
+        {
+
+            if (Handlers.ContainsKey(Name))
+                foreach (string Handler in Handlers[Name])
+                {
+                    try
+                    {
+                        script.Call(script.Globals[Handler], data);
+                    }
+                    catch
+                    {
+                        
+                    }
+                }
+            
+        }
+
+        public bool RemoveHandler(string Name, string func)
         {
 
             try
@@ -45,7 +64,7 @@ namespace LMP_Lua
 
         }
 
-        bool RegisterHandler(string Name, string func)
+        public bool RegisterHandler(string Name, string func)
         {
 
             try
@@ -59,6 +78,24 @@ namespace LMP_Lua
                 return true;
             }
             catch(Exception ex)
+            {
+                Logger.Error(ex.ToString());
+                return false;
+            }
+
+        }
+
+        public bool RegisterCommand(string Name, string func, string description)
+        {
+
+            try
+            {
+
+                new CommandBase(this, Name, func, description);
+
+                return true;
+            }
+            catch (Exception ex)
             {
                 Logger.Error(ex.ToString());
                 return false;

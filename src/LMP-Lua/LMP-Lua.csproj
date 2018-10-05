@@ -82,8 +82,13 @@
     <Reference Include="uhttpsharp">
       <HintPath>..\..\3rd party\LMP\uhttpsharp.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rd party\LMP\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandBase.cs" />
     <Compile Include="KSP.cs" />
     <Compile Include="LMP.cs" />
     <Compile Include="LuaScriptManger.cs" />

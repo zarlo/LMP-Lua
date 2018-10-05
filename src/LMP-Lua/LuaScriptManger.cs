@@ -21,18 +21,7 @@ namespace LMP_Lua
             foreach (Plugin plugin in plugins)
             {
 
-
-                if(plugin.Handlers.ContainsKey(Name))
-                foreach (string Handler in plugin.Handlers[Name])
-                {
-                    try
-                    {
-                        plugin.script.Call(plugin.script.Globals[Handler], data);
-                    }
-                    catch
-                    {
-                    }
-                }
+                plugin.CallHandler(Name, data);
 
             }
 

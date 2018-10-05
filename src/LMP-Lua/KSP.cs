@@ -12,10 +12,14 @@ namespace LMP_Lua
 
         private Plugin plugin;
 
+        public string MinKspVersion;
+        public string MaxKspVersion;
+
         public KSP(Plugin plugin)
         {
             this.plugin = plugin;
-            
+            this.MaxKspVersion = LmpGlobal.KspCompatible.MaxKspVersion.ToString();
+            this.MinKspVersion = LmpGlobal.KspCompatible.MinKspVersion.ToString();
         }
         
 
